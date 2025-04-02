@@ -9,7 +9,10 @@ load_dotenv()
 MONGO_USER=os.environ.get('MONGO_USER')
 MONGO_PASS=os.environ.get('MONGO_PASS')
 
-# Replace the string below with the connection string that's provided to you by Atlas 
+# Uncomment the connection string below and replace the domain dsc333.qmlmqnt.mongodb.net
+# with your domain (check your connection string) and dsc333 at the end with 
+# your cluster name.  
+
 # uri = f"mongodb+srv://{MONGO_USER}:{MONGO_PASS}"+\
 #    f"@dsc333.qmlmqnt.mongodb.net/?retryWrites=true&w=majority&appName=dsc333"
 
