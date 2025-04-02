@@ -9,10 +9,9 @@ load_dotenv()
 MONGO_USER=os.environ.get('MONGO_USER')
 MONGO_PASS=os.environ.get('MONGO_PASS')
 
-
-uri = f"mongodb+srv://{MONGO_USER}:{MONGO_PASS}"+\
-    f"@dsc333.qmlmqnt.mongodb.net/?retryWrites=true&w=majority&appName=dsc333"
-
+# Replace the string below with the connection string that's provided to you by Atlas 
+# uri = f"mongodb+srv://{MONGO_USER}:{MONGO_PASS}"+\
+#    f"@dsc333.qmlmqnt.mongodb.net/?retryWrites=true&w=majority&appName=dsc333"
 
 # Create a new client and connect to the server
 client = MongoClient(uri, server_api=ServerApi('1'))
