@@ -51,34 +51,52 @@ if __name__ == '__main__':
     doc_count = collection.count_documents({})
     print(f'Document count: {doc_count}')
 
+    # Distinct values
+    print('\n\nDistinct car types')
+    results = collection.distinct('Type')
+    for doc in results:
+        print(doc)
+
     # Find one matching document
     print('\n\nFirst match for Honda')
-    result = collection.find_one({'Name': {'$regex': '^Honda'}}, {'_id':0, 'Name':1})
-    print(result)
+    honda = collection.find_one({'Name': {'$regex': '^Honda'}}, 
+        {'_id':0, 'Name':1})
+    print(honda)
 
     # Find all matching documents
     print('\n\nAll matches for Honda')
-    results = collection.find({'Name': {'$regex': '^Honda'}}, {'_id':0, 'Name':1})
+    results = collection.find({'Name': {'$regex': '^Honda'}}, 
+        {'_id':0, 'Name':1})
     for car in results:
         print(car)
 
     # Find all matching documents and sort by mpg
     print('\n\nSort my mpg')
-    results = (collection.find({'Name': {'$regex': '^Honda'}}, {'_id':0, 'Name':1, 'Highway Miles Per Gallon':1})
+    results = (collection.find({'Name': {'$regex': '^Honda'}}, 
+                {'_id':0, 'Name':1, 'Highway Miles Per Gallon':1})
                 .sort('Highway Miles Per Gallon', pymongo.ASCENDING))
     for car in results:
         print(car)
 
+    # Update a single document
+    print('\n\nUpdate a document')
+    query_filter = {'Name' : 'Honda Accord EX 2dr'}
+    update_operation = { '$set' : 
+        { 'Name' : 'Honda Accord EX 2dr (UPDATE)' }
+    }
+    collection.update_one(query_filter, update_operation)
+    result = collection.find_one({'Name': 'Honda Accord EX 2dr (UPDATE)'},
+        {'_id':0, 'Name':1})
+    print(result)
 
-# Update
-'''
-restaurants = database["restaurants"]
+    # Delete a document (and then reinsert it)
+    print('\n\nDelete (and re-inserting) a document')
+    query_filter = {'Name': {'$regex': '^Honda'} }
+    result = collection.delete_one(query_filter)
+    print(result)
 
-query_filter = {'name' : 'Bagels N Buns'}
-update_operation = { '$set' : 
-    { 'name' : '2 Bagels 2 Buns' }
-}
+    result = collection.insert_one(honda)
+    print(result)
 
-result = restaurants.update_one(query_filter, update_operation)
-'''
+
 
