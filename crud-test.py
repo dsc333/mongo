@@ -40,7 +40,7 @@ if __name__ == '__main__':
 
     # Create cars collection from csv file if it doesn't exist
     if 'cars' not in db.list_collection_names():
-        df = pd.read_csv('https://storage.googleapis.com/scsu-data-science/cars.csv')
+        df = pd.read_csv('https://raw.githubusercontent.com/iantonios/dsc205/refs/heads/main/cars.csv')
         car_list = df.to_dict(orient='records')
         collection = db['cars']
         result = collection.insert_many(car_list)
