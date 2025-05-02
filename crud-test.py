@@ -24,7 +24,7 @@ def connect(db_name):
         f"@dsc333.qmlmqnt.mongodb.net/?retryWrites=true&w=majority&appName=dsc333"
 
     # Create a new client and connect to the server
-    client = MongoClient(uri, server_api=ServerApi('1'), , tlsCAFile=certifi.where())
+    client = MongoClient(uri, server_api=ServerApi('1'), tlsCAFile=certifi.where())
     database = client[db_name]
 
     # Send a ping to confirm a successful connection
