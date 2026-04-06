@@ -21,12 +21,9 @@ if not MONGO_USER:
 if not MONGO_PASS:
     MONGO_PASS = getpass.getpass()
 
-# Uncomment the connection string below and replace the domain dsc333.qmlmqnt.mongodb.net
-# with your domain (check your connection string) and dsc333 at the end with 
-# your cluster name.  
-
-# uri = f"mongodb+srv://{MONGO_USER}:{MONGO_PASS}"+\
-#    f"@dsc333.qmlmqnt.mongodb.net/?retryWrites=true&w=majority&appName=dsc333"
+#  Use your connection string 
+uri = f"mongodb+srv://{MONGO_USER}:{MONGO_PASS}"+\
+        f"@YOUR CONNECTION STRING"
 
 # Create a new client and connect to the server
 client = MongoClient(uri, server_api=ServerApi('1'), tlsCAFile=certifi.where())
