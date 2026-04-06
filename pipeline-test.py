@@ -21,8 +21,7 @@ MONGO_PASS = urllib.parse.quote_plus(MONGO_PASS)
 def connect(db_name):
     # replace with your connection string
     uri = f"mongodb+srv://{MONGO_USER}:{MONGO_PASS}"+\
-        f"@dsc333.qmlmqnt.mongodb.net/?retryWrites=true&w=majority&appName=dsc333"
-
+        f"@YOUR CONNECTION STRING"
 
     # Create a new client and connect to the server
     client = MongoClient(uri, server_api=ServerApi('1'))
