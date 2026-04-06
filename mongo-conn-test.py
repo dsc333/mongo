@@ -5,11 +5,15 @@ from dotenv import load_dotenv
 import os 
 import getpass
 import certifi
+import urllib.parse
 
 load_dotenv()
 
 MONGO_USER=os.environ.get('MONGO_USER')
 MONGO_PASS=os.environ.get('MONGO_PASS')
+
+MONGO_USER = urllib.parse.quote_plus(MONGO_USER)
+MONGO_PASS = urllib.parse.quote_plus(MONGO_PASS)
 
 # prompt user for username and password if not defined in .env
 if not MONGO_USER:
