@@ -8,11 +8,15 @@ from pymongo.mongo_client import MongoClient
 from pymongo.server_api import ServerApi
 from dotenv import load_dotenv
 from pprint import pprint
+import urllib.parse
 
 load_dotenv()
 
 MONGO_USER=os.environ.get('MONGO_USER')
 MONGO_PASS=os.environ.get('MONGO_PASS')
+
+MONGO_USER = urllib.parse.quote_plus(MONGO_USER)
+MONGO_PASS = urllib.parse.quote_plus(MONGO_PASS)
 
 def connect(db_name):
     # replace with your connection string
