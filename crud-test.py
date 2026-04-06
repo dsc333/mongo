@@ -25,7 +25,7 @@ if not MONGO_PASS:
 def connect(db_name):
     # REPLACE THE DOMAIN WITH THE DOMAIN IN YOUR CONNECTION STRING
     uri = f"mongodb+srv://{MONGO_USER}:{MONGO_PASS}"+\
-        f"@dsc333.qmlmqnt.mongodb.net/?retryWrites=true&w=majority&appName=dsc333"
+        f"@YOUR CONNECTION STRING"
 
     # Create a new client and connect to the server
     client = MongoClient(uri, server_api=ServerApi('1'), tlsCAFile=certifi.where())
